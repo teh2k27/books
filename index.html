@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Books</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- PAGE 1: All Books Covers and Names -->
+  <main id="page-books" class="page active">
+    <div id="books-grid" class="books-grid"></div>
+  </main>
+
+  <!-- PAGE 2: Book Chapters (Book Image at Top Centre, No Name Below It, Chapter Names) -->
+  <main id="page-chapters" class="page">
+    <img id="chapters-top-image" class="top-center-cover" src="" alt="Book Cover" title="Click to view all books">
+    <ul id="chapters-list" class="chapters-list"></ul>
+  </main>
+
+  <!-- PAGE 3: Chapter Content (Book Image at Top Centre, Only Chapter Content Below, Nothing Else) -->
+  <main id="page-content" class="page">
+    <img id="content-top-image" class="top-center-cover" src="" alt="Book Cover" title="Click to view chapters">
+    <div id="chapter-content"></div>
+  </main>
+
+  <!-- Embedded Book Data from Neon DB -->
+  <script src="books_data.js"></script>
+  <!-- Application & Routing Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
