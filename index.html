@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Books</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- PAGE 1: All Books Covers and Names -->
+  <main id="page-books" class="page active">
+    <div id="books-grid" class="books-grid"></div>
+  </main>
+
+  <!-- PAGE 2: Book Chapters (Book Image at Top Centre, No Name Below It, Chapter Names) -->
+  <main id="page-chapters" class="page">
+    <img id="chapters-top-image" class="top-center-cover" src="" alt="Book Cover" title="Click to view all books">
+    <ul id="chapters-list" class="chapters-list"></ul>
+  </main>
+
+  <!-- PAGE 3: Chapter Content (Book Image at Top Centre, Only Chapter Content Below, Nothing Else) -->
+  <main id="page-content" class="page">
+    <!-- Squircle Copy Button (No text, thin border, no effects) -->
+    <button id="content-copy-btn" class="content-copy-btn" type="button" aria-label="Copy">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+      </svg>
+    </button>
+    <img id="content-top-image" class="top-center-cover" src="" alt="Book Cover" title="Click to view chapters">
+    <article id="chapter-content" class="chapter-content"></article>
+  </main>
+
+  <!-- Embedded Book Data from Neon DB -->
+  <script src="books_data.js"></script>
+  <!-- Application & Routing Logic -->
+  <script src="app.js"></script>
+</body>
+</html>

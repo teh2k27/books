@@ -49,7 +49,7 @@ def main():
             chapters_by_book[bid] = []
         chapters_by_book[bid].append(chap)
 
-    # Identify books whose all chapters audiobooks have been created and saved
+    # Filter out books whose all chapters audiobooks have been created and saved
     removed_books = []
     retained_books = []
 
@@ -77,9 +77,6 @@ def main():
                 'audio_chapters': chaps_with_audio
             })
         else:
-            # Prepare chapters with narration intro:
-            # - Chapter 1: "{Book name} by {author name}\n\nChapter 1 : {chapter name}\n\n{content}"
-            # - Chapter 2+: "Chapter {chapter_number} : {chapter name}\n\n{content}"
             client_chapters = []
             for c in book_chapters:
                 c_num = c['chapter_number']
@@ -124,7 +121,7 @@ def main():
     for rb in removed_books:
         print(f" - [{rb['id']}] {rb['title']} ({rb['audio_chapters']}/{rb['total_chapters']} chapters with audio)")
     
-    print(f"\nRETAINED BOOKS ({len(retained_books)} books remaining with narration headers):")
+    print(f"\nRETAINED BOOKS ({len(retained_books)} books remaining):")
     for b in retained_books:
         if b['audio_chapters_count'] > 0:
             print(f" * Partial: [{b['id']}] {b['title']} ({b['audio_chapters_count']}/{len(b['chapters'])} audio)")
@@ -133,12 +130,12 @@ def main():
     json_path = os.path.join(out_dir, 'books_data.json')
     js_path = os.path.join(out_dir, 'books_data.js')
 
-    # Save filtered data with narration headers as JSON
+    # Save filtered data as JSON
     with open(json_path, 'w', encoding='utf-8') as f:
         json.dump(retained_books, f, ensure_ascii=False, indent=2)
     print(f"\nSaved {json_path} (Size: {os.path.getsize(json_path):,} bytes, {len(retained_books)} books)")
 
-    # Save filtered data with narration headers as JS
+    # Save filtered data as JS
     with open(js_path, 'w', encoding='utf-8') as f:
         f.write("window.BOOKS_DATA = ")
         json.dump(retained_books, f, ensure_ascii=False)
